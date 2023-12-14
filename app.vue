@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import ms from 'ms'
-
-const { data: info } = await useFetch('/api/info')
-
-const generatedAt = useState(() => new Date().toISOString())
-const date = new Date(generatedAt.value)
-const timeAgo = ref()
+const generatedAt = useState(() => new Date().toISOString());
+const date = new Date(generatedAt.value);
+const timeAgo = ref();
 onMounted(() => {
-  timeAgo.value = ms(Date.now() - date.valueOf(), { long: true })
-})
+  timeAgo.value = Date.now() - date.valueOf();
+});
 </script>
 
 <template>
@@ -42,15 +38,6 @@ onMounted(() => {
       <main>
         <h1>Hello from Vercel!</h1>
         <div class="info">
-          <div class="block">
-            <div v-if="info" class="contents">
-              <span>Served by</span>
-              <strong style="text-transform: uppercase;">
-                {{ info.region || '-' }}
-              </strong>
-            </div>
-          </div>
-
           <div class="block">
             <div class="contents">
               <span>Generated</span>
@@ -99,8 +86,8 @@ body {
   --bg: white;
   --primary: #00dc82;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--bg);
   color: var(--fg);
 }
